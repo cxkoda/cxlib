@@ -1,0 +1,10 @@
+% minipages with frame (for debugging)
+\newsavebox{\fmbox}
+\newenvironment{fminipage}[1]
+{\begin{lrbox}{\fmbox}\begin{minipage}{#1}}
+{\end{minipage}\end{lrbox}\fbox{\usebox{\fmbox}}}
+
+% solve problem with math-dollar
+\makeatletter
+\global\let\tikz@ensure@dollar@catcode=\relax
+\makeatother

@@ -1,0 +1,34 @@
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Citations and bibliography
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\setlength\bibitemsep{1.5\itemsep}
+
+\DeclareFieldFormat
+  [article]
+  {journaltitle}{{#1}}
+  
+\DeclareFieldFormat
+  [article]
+  {volume}{\textbf{#1}}
+
+\DeclareFieldFormat{pages}{\mkfirstpage{#1}}
+
+\renewbibmacro{in:}{}
+
+\AtEveryBibitem{%
+  \clearname{translator}%
+  \clearfield{pagetotal}%
+  \clearfield{eid}%
+  \clearlist{language}%
+  \clearfield{title}%
+  \clearfield{doi}%
+  \clearfield{issn}%
+  \clearfield{month}%
+  \clearfield{series}%
+  \clearlist{location}%
+}
+
+\AtBeginBibliography{%
+  \renewcommand\mkbibnamefamily[1]{\textsc{#1}}}
+

@@ -1,0 +1,217 @@
+% -- new commands --
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\Abs}[1]{\left\lvert#1\right\rvert}
+\providecommand{\norm}[1]{\left\Vert#1\right\Vert}
+\providecommand{\Trace}[1]{\ensuremath{\Tr\{\,#1\,\}}} % Trace /Spur
+\DeclarePairedDelimiter{\diagfences}{(}{)}
+\newcommand{\diag}{\operatorname{diag}\diagfences}
+%
+
+\renewcommand{\d}{\partial\mspace{2mu}} % partial diff
+\newcommand{\td}{\,\mathrm{d}}	% total diff
+
+\newcommand{\Ham}{\mathcal{H}}    % Hamilton
+\newcommand{\Prob}{\mathscr{P}}    % Hamilton
+\newcommand{\unity}{\mathds{1}}   % Real
+
+\renewcommand{\i}{\mathrm{i}}   % imaginäre Einheit
+
+\newcommand{\ret}[1]{\left[ #1 \right]_{\text{ret}} }
+\newcommand{\refequal}[1]{\overset{\mathclap{\text{#1}}}{=}}
+
+% -- New Operators --
+\DeclareMathOperator{\minmod}{minmod}
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\e}{e} 			% exponatial Function
+
+
+% nummerierung in gleichungen (align*,...)
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% holen einzelner werte aus einer csv datei
+\newcommand{\csvget}[3]{\csvreader[no head, filter equal={\thecsvinputline}{#2}]{#1}{}{#3}}
+
+\newcommand{\eqlegend}[2]{#1... \text{\hspace{0.2 cm}#2}}
+
+
+\makeatletter
+\def\bbordermatrix#1{\begingroup \m@th
+  \@tempdima 4.75\p@
+  \setbox\z@\vbox{%
+    \def\cr{\crcr\noalign{\kern2\p@\global\let\cr\endline}}%
+    \ialign{$##$\hfil\kern2\p@\kern\@tempdima&\thinspace\hfil$##$\hfil
+      &&\quad\hfil$##$\hfil\crcr
+      \omit\strut\hfil\crcr\noalign{\kern-\baselineskip}%
+      #1\crcr\omit\strut\cr}}%
+  \setbox\tw@\vbox{\unvcopy\z@\global\setbox\@ne\lastbox}%
+  \setbox\tw@\hbox{\unhbox\@ne\unskip\global\setbox\@ne\lastbox}%
+  \setbox\tw@\hbox{$\kern\wd\@ne\kern-\@tempdima\left[\kern-\wd\@ne
+    \global\setbox\@ne\vbox{\box\@ne\kern2\p@}%
+    \vcenter{\kern-\ht\@ne\unvbox\z@\kern-\baselineskip}\,\right]$}%
+  \null\;\vbox{\kern\ht\@ne\box\tw@}\endgroup}
+\makeatother
+
+%citation
+%\newcommand{\secref}[1]{sec. \ref{#1}}
+%\newcommand{\chref}[1]{ch. \ref{#1}}
+%\newcommand{\figref}[1]{fig. \ref{#1}}
+%\newcommand{\tabref}[1]{tab. \ref{#1}}
+\newcommand{\secref}[1]{\autoref{#1}}
+\newcommand{\chref}[1]{ \autoref{#1}}
+\newcommand{\figref}[1]{\autoref{#1}}
+\newcommand{\tabref}[1]{\autoref{#1}}
+
+% temporarily alter max cite names
+\makeatletter
+\newcommand{\tempmaxup}[1]{
+	\newcount\tempmaxcitenames%
+	{\tempmaxcitenames=\blx@maxcitenames}%
+	\def\blx@maxcitenames{\blx@maxbibnames}%
+	#1%
+	\def\blx@maxcitenames{\tempmaxcitenames}%
+}
+\makeatother
+
+% cite all authors
+\newcommand{\textciteall}[1]{\tempmaxup{\textcite{#1}}}
+
+
+% lorentz factor
+\newcommand{\glorentz}{W}
+
+% in contact disc reference frame
+\newcommand{\inC}[1]{\lbrace{ #1 \rbrace}}
+
+%shock jumps
+\newcommand{\jump}[1]{\left[ \left[ #1 \right] \right]}
+
+% conserved / primitive vector
+\newcommand{\vU}{{\bf U}}
+\newcommand{\vF}{{\bf F}}
+\newcommand{\vV}{{\bf V}}
+\newcommand{\vVm}{\overline{\vV}}
+\newcommand{\vUm}{\overline{\vU}}
+\newcommand{\vFm}{\overline{\vF}}
+
+
+%eos
+\newcommand{\ideal}[1]{\left[ #1 \right]_{Ideal}}
+\newcommand{\perfect}[1]{\left[ #1 \right]_{Perfect}}
+\newcommand{\taub}[1]{\left[ #1 \right]_{Taub}}
+
+
+% for tabularx
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% force equation labels to be always of the same size
+\makeatletter
+\renewcommand{\maketag@@@}[1]{\hbox{\m@th\normalsize\normalfont#1}}%
+\makeatother
+
+
+% bibliography
+\renewbibmacro*{doi+eprint+url}{%
+  \iftoggle{bbx:url}%	Print url only if there is no doi or eprint
+    {\iffieldundef{doi}{\iffieldundef{eprint}{\usebibmacro{url+urldate}{}}}{}}
+    {}%
+  \newunit\newblock
+  \iftoggle{bbx:eprint}%	Print eprint only if there is no 
+    {\iffieldundef{doi}{\usebibmacro{eprint}}{}}
+    {}%
+  \newunit\newblock
+  \iftoggle{bbx:doi}
+    {\printfield{doi}{}}
+    {}%
+}
+
+
+% solve problem with math-dollar
+\makeatletter
+\global\let\tikz@ensure@dollar@catcode=\relax
+\makeatother
+
+
+% code
+\newcommand{\cronos}{\textsc{Cronos} }
+\newcommand{\hll}{\textsc{HLLE} }
+\newcommand{\hllc}{\textsc{HLLC} }
+
+
+% make an equation number inside environment
+\makeatletter
+\newcommand\Label[1]{&\refstepcounter{equation}(\theequation)\ltx@label{#1}&}
+\makeatother
+
+
+% zlevel in tikz
+\tikzset{zlevel/.style={%
+    execute at begin scope={\pgfonlayer{#1}},
+    execute at end scope={\endpgfonlayer}
+}}
+
+% in units
+\newcommand{\inUnits}[1]{\footnotesize \, \left[ \si{#1} \right]}
+
+
+
+% Riemann fan
+\newcommand{\RiemannW}{1}
+\newcommand{\RiemannH}{1}
+
+\newcommand{\setRiemannFanParams}[7]{
+\renewcommand{\RiemannW}{#1}
+\renewcommand{\RiemannH}{#2}
+}
+
+\newcommand{\RiemannFan}[6][1]{%
+\begin{tikzpicture}[overlay]
+	% Fills
+	\def\fillAlpha{#1};
+	\def\leftHead{#2};
+	\def\leftTail{#3};
+	\def\cd{#4};
+	\def\rightTail{#5};
+	\def\rightHead{#6};
+	
+	\def\sCol{darkred};
+	\def\rCol{darkcyan};
+	\def\cCol{OliveGreen};	
+	
+	\ifdim\fillAlpha pt>0.0pt
+		\path[fill=myred, opacity=0.2*\fillAlpha] (0,0) -- (\leftHead ,1) -- (-1,1) -- (-1,0);
+		\path[fill=LimeGreen!40, opacity=0.5*\fillAlpha] (0,0) -- (\leftTail, 1) -- (\cd, 1);
+		\path[fill=yellow!40!, opacity=0.5*\fillAlpha] (0,0) -- (\rightTail, 1) -- (\cd, 1);
+		\path[fill=darkcyan, opacity=0.2*\fillAlpha] (0,0) -- (\rightHead, 1) -- (1, 1) -- (1, 0);
+	\fi
+
+	\draw[\cCol, -] (0, 0) -- (\cd, 1);
+	
+	\ifthenelse{\equal{\leftHead}{\leftTail}}
+	{\draw[\sCol, -] (0, 0) -- (\leftHead, 1);}%
+	{
+		\path[fill=gray, opacity=0.2] (0,0) -- (\leftHead, 1) -- (\leftTail, 1);
+		\foreach \x in {0.0, 0.2, ..., 1.0} {
+			\pgfmathsetmacro{\rf}{\x * (\leftHead - \leftTail) + \leftTail};
+			\draw[\rCol, -] (0, 0) -- (\rf, 1);
+		}	
+	}
+	
+	\ifthenelse{\equal{\rightHead}{\rightTail}}
+	{\draw[\sCol, -] (0, 0) -- (\rightHead, 1);}%
+	{
+		\path[fill=gray, opacity=0.2] (0,0) -- (\rightHead, 1) -- (\rightTail, 1);
+		\foreach \x in {0.0, 0.2, ..., 1.0} {
+			\pgfmathsetmacro{\rf}{\x * (\rightHead - \rightTail) + \rightTail};
+			\draw[\rCol, -] (0, 0) -- (\rf, 1);
+		}	
+	}
+\end{tikzpicture}		
+}
+
+
+
