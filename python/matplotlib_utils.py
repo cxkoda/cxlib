@@ -8,3 +8,10 @@ def multipage(filename, figs=None):
     for fig in figs:
         fig.savefig(pp, format='pdf')
     pp.close()
+
+def gridShow(nCol = 2):
+    for idx, idFig in enumerate(plt.get_fignums()):
+        plt.figure(idFig)
+        mgr = plt.get_current_fig_manager()
+        arg = "+%i+%i" % (idx % nCol * 700, int(idx/nCol) * 500)
+        mgr.window.wm_geometry(arg)
