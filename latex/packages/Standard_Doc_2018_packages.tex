@@ -4,25 +4,25 @@
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 
-\usepackage{palatino} % Use the Palatino font by default
+\usepackage[plainpages=false,
+  pdfpagelabels,
+  naturalnames=true,pdftex,linktocpage]{hyperref} % sets hyperrefs
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Typesetting
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{setspace}
+%\usepackage{palatino} % Use the Palatino font by default
+\usepackage{textcomp}	 % Zusätzliche Symbole (Text Companion font extension)
+
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Citations and bibliography
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\usepackage[
-backend=biber,
-style=authoryear-icomp,
-dashed=false,
-citestyle=authoryear,
-minbibnames=3,
-maxbibnames=3,
-mincitenames=1, 
-maxcitenames=2, 
-uniquename=false,
-uniquelist=false
-]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
 
+\usepackage{xpatch} % recommended by biblatex
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
 
@@ -30,20 +30,13 @@ uniquelist=false
 % Drawing2
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \usepackage{tikz}
-\usepackage{graphicx}
-\usepackage[outline]{contour}
+\usepackage{graphicx} % Allows inclusion of image files
 \usepackage{tikz-3dplot}
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{shadings}
-\usetikzlibrary{patterns}
-\usetikzlibrary{decorations.markings}
-\usetikzlibrary{decorations.pathreplacing}
-\usetikzlibrary{decorations.pathmorphing}
-\usetikzlibrary{arrows}
-
-
+\usetikzlibrary{decorations.markings, decorations.pathreplacing}
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,11 +49,10 @@ uniquelist=false
 
 \usepackage{mathtools}
 \usepackage{mathrsfs}
+\usepackage{mathcomp}
 % Warnt bei Benutzung von Befehlen die mit amsmath inkompatibel sind.
 \usepackage[all, error]{onlyamsmath}
 
-% Durchstreichen
-\usepackage[makeroom]{cancel}
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Tables
@@ -71,11 +63,5 @@ uniquelist=false
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Lists
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-%\usepackage{enumitem} % not compatible with beamer
+\usepackage{enumitem}
 
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% Presentation
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\usepackage{siunitx}
-\usepackage{movie15}
-\usepackage{pdfpc-commands}

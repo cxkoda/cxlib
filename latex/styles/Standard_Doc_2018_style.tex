@@ -1,0 +1,82 @@
+\usepackage[margin=1in]{geometry} % Sets all four margins to 1 inch
+\pagestyle{empty} % Ensures that no page numbers are printed
+\parskip = 0.2 in % Puts a little space between paragraphs 
+\parindent = 0.0 in % Enforces no indentation for paragraphs
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Metadata
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\hypersetup{
+  colorlinks=true,   % aktiviert farbige Referenzen    
+  pdfpagemode=None,  % PDF-Viewer startet ohne Inhaltsverzeichnis et.al.
+  pdfstartview=Fit % PDF-Viewer benutzt beim Start bestimmte Seitenbreite
+}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Fonts Fonts Fonts
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%% ==== Zusammengesetzte Schriften  (Sans + Serif) =======================
+
+%% - Latin Modern
+\usepackage{lmodern}
+%% -------------------
+
+%% - Bera Schriften
+%\usepackage{bera}
+%% -------------------
+
+%% - Times, Helvetica, Courier (Word Standard...)
+%\usepackage{mathptmx}
+%\usepackage[scaled=.90]{helvet}
+%\usepackage{courier}
+%% -------------------
+
+%% - Palantino , Helvetica, Courier
+%\usepackage{mathpazo}
+%\usepackage[scaled=.95]{helvet}
+%\usepackage{courier}
+%% -------------------
+
+%% - Charter, Bera Sans
+%\usepackage{charter}\linespread{1.05}
+%\renewcommand{\sfdefault}{fvs}
+%\usepackage[charter]{mathdesign}
+
+
+
+%%%% =========== Typewriter =============
+
+%\usepackage{courier}                   %% --- Courier
+%\renewcommand{\ttdefault}{cmtl}        %% --- CmBright Typewriter Font
+%\usepackage[%                          %% --- Luxi Mono (Typewriter)
+%   scaled=0.9
+%]{luximono}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% fonts of headings
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% for komascripts
+%\setkomafont{sectioning}{\normalfont\sffamily} % \rmfamily
+%\setkomafont{descriptionlabel}{\itshape}
+%\setkomafont{pageheadfoot}{\normalfont\normalcolor\small\sffamily}
+%\setkomafont{pagenumber}{\normalfont\sffamily}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Table settings
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\providecommand\tablestyle{%
+  \renewcommand{\arraystretch}{1.4} % Groessere Abstaende zwischen Zeilen
+  \normalfont\normalsize            %
+  %\sffamily\small           % Serifenlose und kleine Schrift
+  \small
+  \centering%                       % Tabelle zentrieren
+}
+
+\colorlet{tablesubheadcolor}{gray!40}
+\colorlet{tableheadcolor}{gray!25}
+\colorlet{tableblackheadcolor}{black!60}
+\colorlet{tablerowcolor}{gray!15.0}

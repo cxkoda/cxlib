@@ -1,0 +1,6 @@
+% cancel with overlay function
+\renewcommand<>{\cancel}[1]{
+\alt#2{
+\only#2{\beameroriginal{\cancel}{#1}}
+}{#1}
+}
