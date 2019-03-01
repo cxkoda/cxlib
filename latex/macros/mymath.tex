@@ -1,0 +1,43 @@
+
+
+
+% manuelle nummerierung in nicht-nummerierten envs (align*,...)
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+% force equation labels to be always of the same size
+\makeatletter
+\renewcommand{\maketag@@@}[1]{\hbox{\m@th\normalsize\normalfont#1}}%
+\makeatother
+
+
+% solve problem with math-dollar
+\makeatletter
+\global\let\tikz@ensure@dollar@catcode=\relax
+\makeatother
+
+
+% -- new commands --
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\Abs}[1]{\left\lvert#1\right\rvert}
+\providecommand{\norm}[1]{\left\Vert#1\right\Vert}
+\providecommand{\Trace}[1]{\ensuremath{\Tr\{\,#1\,\}}} % Trace /Spur
+\DeclarePairedDelimiter{\diagfences}{(}{)}
+\newcommand{\diag}{\operatorname{diag}\diagfences}
+%
+
+\renewcommand{\d}{\partial\mspace{2mu}} % partial diff
+\newcommand{\td}{\,\mathrm{d}}	% total diff
+
+\newcommand{\unity}{\mathds{1}}   % Real
+
+\renewcommand{\i}{\mathrm{i}}   % imaginäre Einheit
+
+\newcommand{\ret}[1]{\left[ #1 \right]_{\text{ret}} }
+\newcommand{\refequal}[1]{\overset{\mathclap{\text{#1}}}{=}}
+
+% -- New Operators --
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\e}{e} 			% exponatial Function
