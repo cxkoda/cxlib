@@ -1,0 +1,77 @@
+\documentclass[12pt]{article} % Specifies font size
+
+
+%----------------PREAMBLE-------------------------------------------%%
+
+\input{preamble/Standard_Doc_2018_packages}
+\input{preamble/Standard_Doc_2018_style}
+\input{preamble/Biblatex_numeric_2018}
+\input{preamble/References_style_2018}
+
+\addbibresource{biblio.bib}
+
+%-------------------------------------------------------------------%%
+
+
+%-----------METADATA------------------------------------------------%%
+\author{David Huber\\
+\href{mailto:david.huber@uibk.ac.at}{david.huber@uibk.ac.at}}
+\title{This is a title}
+
+\hypersetup{
+  pdfauthor = {David Huber},
+  pdftitle = {This is a title},
+  pdfsubject = {}}
+%-------------------------------------------------------------------%%
+
+
+%-----------CONTENT--------------------------------------------------%%
+\begin{document}
+
+\let\endtitlepage\relax % suppress newpage after titlepage
+\setstretch{1.3} % increase line spacing
+
+
+\begin{titlepage}
+\begin{center}
+% Übertitel
+\textsc{\Large This is a title}\\[0.2 cm]
+% Titel
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\HRule \\[0.4cm]
+{ \LARGE \textbf{This is a bigger title}}\\[0.1cm]
+\HRule \\[1.5cm]
+% Author & Supervisor
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushleft} \normalsize
+\emph{Author:}\\
+David \textsc{Huber}, BSc MSc\\
+\href{mailto:david.huber@uibk.ac.at}{david.huber@uibk.ac.at}
+\end{flushleft}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.4\textwidth}
+\begin{flushright} \normalsize
+%\emph{Supervisors:} \\
+%Univ. Prof. Dr. Olaf \textsc{Reimer}\\
+%Assoc. Prof. Dr. Ralf \textsc{Kissmann}\\
+\end{flushright}
+\end{minipage}
+\end{center}
+\end{titlepage}
+
+
+
+
+\section{References}
+\printbibliography[heading=none]
+
+
+
+
+
+
+
+\end{document} 
+%-------------------------------------------------------------------%%
+
