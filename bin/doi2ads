@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+
+import requests
+import json
+import tempfile
+import sys, os
+
+# generate an api token under https://ui.adsabs.harvard.edu/#user/settings/token 
+token = "h4WMENw8i0KtzDEjLU8nG04iCz9AnIGONwXmBj0m"
+
+# Search for papers with the given dois
+r = requests.get("https://api.adsabs.harvard.edu/v1/search/query",\
+                headers={'Authorization': 'Bearer ' + token},
+                params={'q':f'doi:{" OR ".join(sys.argv[1:])}', "fl":"author, year, bibcode"}
+                )
+docs = r.json()['response']['docs']
+
+
+# List all found papers
+print('Found the following papers')
+for doc in docs:
+  print(f" - {doc['author'][0]} ({doc['year']}) -> {doc['bibcode']}")
+print()
+
+# Generate bibtex entries for the papers
+bibcodes = [doc['bibcode'] for doc in docs]
+payload = {"bibcode":bibcodes}
+r = requests.post("https://api.adsabs.harvard.edu/v1/export/bibtex", \
+                headers={"Authorization": "Bearer " + token, "Content-type": "application/json"}, \
+                data=json.dumps(payload))
+bibtex = r.json()['export']
+print(bibtex)
+
+# Write the generated bibtex to a file to avoid char escape errors
+# and copy it to the clipboard
+with tempfile.NamedTemporaryFile(delete=False) as temp:
+  temp.write(bytes(bibtex,"utf-8"))
+  temp.close()
+
+  # This line might differ for other OS
+  os.system(f"xclip -sel clip -i {temp.name}")
+  
+  
+  

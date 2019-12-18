@@ -1,0 +1,10 @@
+git clone git@git.uibk.ac.at:c706138/CronosNumLib.git
+cd CronosNumLib
+./configure.sh
+make install -j8
+
+cd ..
+git clone git@git.uibk.ac.at:c706138/CronosCode.git
+cd CronosCode
+./configure.sh ../CronosNumLib
+
