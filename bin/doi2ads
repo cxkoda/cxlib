@@ -8,13 +8,19 @@ import sys, os
 # generate an api token under https://ui.adsabs.harvard.edu/#user/settings/token 
 token = "h4WMENw8i0KtzDEjLU8nG04iCz9AnIGONwXmBj0m"
 
+dois = sys.argv[1:]
+dois = [f'"{doi}"' for doi in dois]
+
 # Search for papers with the given dois
 r = requests.get("https://api.adsabs.harvard.edu/v1/search/query",\
                 headers={'Authorization': 'Bearer ' + token},
-                params={'q':f'doi:{" OR ".join(sys.argv[1:])}', "fl":"author, year, bibcode"}
+                params={'q':f'doi:{" OR ".join(dois)}', "fl":"author, year, bibcode"}
                 )
-docs = r.json()['response']['docs']
-
+try:
+  docs = r.json()['response']['docs']
+except:
+  print(r.text())
+  exit(1)
 
 # List all found papers
 print('Found the following papers')
