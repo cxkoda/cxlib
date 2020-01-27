@@ -6,7 +6,7 @@ import tempfile
 import sys, os
 
 # generate an api token under https://ui.adsabs.harvard.edu/#user/settings/token 
-token = "h4WMENw8i0KtzDEjLU8nG04iCz9AnIGONwXmBj0m"
+token = os.environ['ADSABS_API_TOKEN']
 
 dois = sys.argv[1:]
 dois = [f'"{doi}"' for doi in dois]
