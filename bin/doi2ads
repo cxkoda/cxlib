@@ -11,6 +11,10 @@ token = os.environ['ADSABS_API_TOKEN']
 dois = sys.argv[1:]
 dois = [f'"{doi}"' for doi in dois]
 
+if(len(dois) == 0):
+  print("No dois given")
+  exit(1)
+
 # Search for papers with the given dois
 r = requests.get("https://api.adsabs.harvard.edu/v1/search/query",\
                 headers={'Authorization': 'Bearer ' + token},
@@ -19,7 +23,7 @@ r = requests.get("https://api.adsabs.harvard.edu/v1/search/query",\
 try:
   docs = r.json()['response']['docs']
 except:
-  print(r.text())
+  print(r.text)
   exit(1)
 
 # List all found papers
